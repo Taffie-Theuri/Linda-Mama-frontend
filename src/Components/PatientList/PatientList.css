@@ -4,7 +4,7 @@
   }
   .bttn {
     background-color: transparent;
-    color: white;
+    color: black;
     border: 2px solid #fff;
     display: flex;
     flex-direction: row;
@@ -18,7 +18,7 @@
   }
   .bttn:hover{
     background-color:rgb(183, 58, 164) ;
-    color: whit;
+    color: white;
   }
   .bttn-clicked{
     background-color:#fff ;
