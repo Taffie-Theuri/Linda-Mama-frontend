@@ -1,6 +1,6 @@
 .container {
     text-align: left;
-    background-color: white;
+    background-color: rgb(243, 126, 146);
     padding: 30px;
     border-radius: 8px;
     margin: 10px auto;
@@ -9,21 +9,20 @@
     max-width: 500px;
   }
   
-  /* Style the title */
   .title {
     font-size: 24px;
     font-weight: bold;
     margin-bottom: 16px;
   }
   
-  /* Style the lab results list */
+  
   .list {
     list-style-type: none;
     padding: 10;
     margin: 20;
   }
   
-  /* Style each lab result item */
+  
   .listItem {
     margin-bottom: 46px;
     
