@@ -31,6 +31,7 @@ return (
       <Route path='/portal/appointments' element={<PortalAppts patientAppts={patientAppts} user={user} /> } />
       <Route path='/portal/labresults' element={<PortalLabResults user={user} results={results} /> } />
     </Routes>
+    <p> Some Changes </p>
     <Footer />
   </div>
 );
