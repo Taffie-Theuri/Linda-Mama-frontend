@@ -1,44 +1,76 @@
- 
-import React from "react";
-import Post1 from "./blogpost2";
-import Post2 from "./blogpost1";
-import Post3 from "./blogpost3";
-import Post4 from "./blogpost4";
-import { Container, Row, Col, Card } from 'react-bootstrap';
- 
- 
-const Posts = () => {
-    return (
-        <Container>
-            <Row className="justify-content-between">
-                <Col md={8} className="mb-4 mt-4">
-                    <Post2 />
-                </Col>
-                <Col md={2} className="mt-4 float-right">
-                    <Card>
-                        <Card.Body>
-                            <Card.Title>Recent Posts</Card.Title>
-                            <ul className="list-unstyled">
-                                <li><a href="#">BREAST FEEDING</a></li>
-                                <li><a href="#">PELVIC FLOOR HEALTH</a></li>
-                                <li><a href="#">SCREENING FOR DOWN SYNDROME</a></li>
-                                <li><a href="#">COVID AND PREGNANCY: RISKS,VACCINES AND LACTATING</a></li>
-                            </ul>
-                        </Card.Body>
-                    </Card>
-                </Col>
-                <Col md={8} className="mb-4">
-                    <Post1 />
-                </Col>
-                <Col md={8} className="mb-4">
-                    <Post3 />
-                </Col>
-                <Col md={8} className="mb-4">
-                    <Post4 />
-                </Col>
-            </Row>
-        </Container>
-    );
+import React, { useState } from 'react';
+import Post1 from './BlogPost1';
+import Post2 from './BlogPost2';
+import Post3 from './BlogPost3';
+import Post4 from './BlogPost4';
+
+const Posts = ({ posts, comments, onCommentSubmit, postsPerPage }) => {
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const totalPages = Math.ceil(posts.length / postsPerPage);
+  const indexOfLastPost = currentPage * postsPerPage;
+  const indexOfFirstPost = indexOfLastPost - postsPerPage;
+  const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
+
+  const handleNextPage = () => {
+    if (currentPage < totalPages) {
+      setCurrentPage((prevPage) => prevPage + 1);
+    }
+  };
+
+  const handlePrevPage = () => {
+    if (currentPage > 1) {
+      setCurrentPage((prevPage) => prevPage - 1);
+    }
+  };
+
+  return (
+    <div>
+      <div className="posts-container">
+        {currentPosts.map((post) => (
+          <div className="post-card" key={post.id}>
+            {post.id === 1 && (
+              <Post1
+                post={post}
+                comments={comments[post.id] || []}
+                onCommentSubmit={(comment) => onCommentSubmit(post.id, comment)}
+              />
+            )}
+            {post.id === 2 && (
+              <Post2
+                post={post}
+                comments={comments[post.id] || []}
+                onCommentSubmit={(comment) => onCommentSubmit(post.id, comment)}
+              />
+            )}
+            {post.id === 3 && (
+              <Post3
+                post={post}
+                comments={comments[post.id] || []}
+                onCommentSubmit={(comment) => onCommentSubmit(post.id, comment)}
+              />
+            )}
+            {post.id === 4 && (
+              <Post4
+                post={post}
+                comments={comments[post.id] || []}
+                onCommentSubmit={(comment) => onCommentSubmit(post.id, comment)}
+              />
+            )}
+          </div>
+        ))}
+      </div>
+      <div className="pagination">
+        <button onClick={handlePrevPage} disabled={currentPage === 1}>
+          Prev
+        </button>
+        <span>{currentPage}</span>
+        <button onClick={handleNextPage} disabled={currentPage === totalPages}>
+          Next
+        </button>
+      </div>
+    </div>
+  );
 };
- 
+
 export default Posts;
