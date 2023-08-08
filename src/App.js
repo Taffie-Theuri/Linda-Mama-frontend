@@ -16,7 +16,7 @@ import PortalCalendar from './Components/PortalCalendar/PortalCalendar.js'
 
 function App() {
 
-}
+
 
 return (
   <div className="App">
@@ -34,6 +34,6 @@ return (
     <Footer />
   </div>
 );
-
+}
 
 export default App;
