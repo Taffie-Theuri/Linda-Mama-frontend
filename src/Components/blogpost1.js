@@ -20,11 +20,11 @@ const Post1 = ({ post, comments, onCommentSubmit }) => {
             {showFullContent ? 'Read Less' : 'Read More'}
           </a>
           <div>
-          {comments.map((comment) => (
-            <div key={comment.id}>{comment.content}</div>
-          ))}
-          <CommentForm postId={post.id} onSubmit={onCommentSubmit} />
-        </div>
+            {comments.map((comment) => (
+              <div key={comment.id}>{comment.content}</div>
+            ))}
+            <CommentForm postId={post.id} onSubmit={onCommentSubmit} />
+          </div>
         </Card.Text>
       </Card.Body>
     </Card>
