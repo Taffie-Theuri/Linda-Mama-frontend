@@ -50,7 +50,7 @@ const App = () => {
       <Navbar />
       {posts.length > 0 ? (
         <Posts
-          postsPerPage={4} // Number of blog posts to display per page
+          postsPerPage={4} 
           posts={posts}
           comments={comments}
           onCommentSubmit={handleCommentSubmit}
