@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Card } from 'react-bootstrap';
+import CommentForm from './CommentForm';
 
 const Post2 = ({ post, comments, onCommentSubmit }) => {
   const [showFullContent, setShowFullContent] = useState(false);
