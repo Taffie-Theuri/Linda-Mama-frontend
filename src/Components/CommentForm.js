@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './comment.css'; // Import your CSS file for component-specific styles
 
 const CommentForm = ({ postId, onSubmit }) => {
   const [comment, setComment] = useState('');
@@ -14,14 +15,17 @@ const CommentForm = ({ postId, onSubmit }) => {
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
+    <div className="comment-form-container">
+      <form className="comment-form" onSubmit={handleSubmit}>
         <textarea
+          className="comment-input"
           value={comment}
           onChange={handleChange}
           placeholder="Write your comment..."
         />
-        <button type="submit">Submit</button>
+        <button className="submit-button" type="submit" >
+          Submit
+        </button>
       </form>
     </div>
   );

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Card } from 'react-bootstrap';
 import CommentForm from './CommentForm';
+import './blogcard.css'; 
 
 const Post1 = ({ post, comments, onCommentSubmit }) => {
   const [showFullContent, setShowFullContent] = useState(false);
@@ -10,19 +11,19 @@ const Post1 = ({ post, comments, onCommentSubmit }) => {
   };
 
   return (
-    <Card>
-      <Card.Img variant="top" src={post.image} width={20} height={350} />
+    <Card className="post-card">
+      <Card.Img variant="top" src={post.image} className="post-image" />
       <Card.Body>
-        <Card.Title>{post.title}</Card.Title>
-        <Card.Text>
+        <Card.Title className="post-title">{post.title}</Card.Title>
+        <Card.Text className="post-content">
           {showFullContent ? post.content : post.content.slice(0, 200) + '...'}
           <br />
-          <a onClick={toggleContent} className="btn btn-primary">
+          <button onClick={toggleContent} className="read-more-link">
             {showFullContent ? 'Read Less' : 'Read More'}
-          </a>
-          <div>
+          </button>
+          <div className="comments-section">
             {comments.map((comment) => (
-              <div key={comment.id}>{comment.content}</div>
+              <div key={comment.id} className="comment">{comment.content}</div>
             ))}
             <CommentForm postId={post.id} onSubmit={onCommentSubmit} />
           </div>

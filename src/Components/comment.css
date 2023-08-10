@@ -1,0 +1,34 @@
+/* CommentForm.css */
+.comment-form-container {
+    margin-top: 20px;
+  }
+  
+  .comment-form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .comment-input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    resize: vertical;
+    font-size: 14px;
+  }
+  
+  .submit-button {
+    background-color: #005eff;
+    color: rgb(235, 228, 228);
+    border:#1b9988;
+    border-radius: 5px;
+    padding: 8px 15px;
+    cursor:cell;
+    font-size: 12px;
+  }
+  
+  .submit-button:hover {
+    background-color: #1b9988;
+  }
+  
