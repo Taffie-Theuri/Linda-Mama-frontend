@@ -8,8 +8,9 @@ const BlogNav = () => {
     return (
         <div>
             <Navbar style={{
-            backgroundColor: "#FFC0CB",
+            backgroundColor: "#F28C28",
             height: "80px", // Increase the height as desired
+            borderRadius: "5px",
             display: "flex",
             justifyContent: "center",
             alignItems: "center"
@@ -38,7 +39,7 @@ const BlogNav = () => {
                         </Nav.Link>
                     </Nav> */}
                     <Form inline>
-                        <FormControl type="text" placeholder="Search" className="ml-auto"  />
+                        <FormControl type="text" placeholder="Search" className="ml-auto" style={{borderRadius: "5px", marginRight: "30px"}}/>
                     </Form>
                 </Navbar.Collapse>
             </Navbar>
