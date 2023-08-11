@@ -32,7 +32,7 @@ const CommentForm = ({ postId, onSubmit }) => {
           value={comment}
           onChange={handleChange}
           placeholder="Write your comment..."
-          style={{ marginBottom: '10px' }} // Separate from submit-button
+          style={{ marginBottom: '30px' }} // Separate from submit-button
         />
         <button className="submit-button" type="submit" style={{ alignSelf: 'flex-end' }}>
           Submit
