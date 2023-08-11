@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
-import Post1 from './BlogPost1';
-import Post2 from './BlogPost2';
-import Post3 from './BlogPost3';
-import Post4 from './BlogPost4';
+import './posts.css'
+import { Col } from 'react-bootstrap';
 
-const Posts = ({ posts, comments, onCommentSubmit, postsPerPage }) => {
+const Posts = ({ posts, comments, onCommentSubmit, postsPerPage, Post,  }) => {
+  
   const [currentPage, setCurrentPage] = useState(1);
 
   const totalPages = Math.ceil(posts.length / postsPerPage);
@@ -25,41 +24,17 @@ const Posts = ({ posts, comments, onCommentSubmit, postsPerPage }) => {
   };
 
   return (
-    <div>
-      <div className="posts-container">
-        {currentPosts.map((post) => (
-          <div className="post-card" key={post.id}>
-            {post.id === 1 && (
-              <Post1
-                post={post}
-                comments={comments[post.id] || []}
-                onCommentSubmit={(comment) => onCommentSubmit(post.id, comment)}
-              />
-            )}
-            {post.id === 2 && (
-              <Post2
-                post={post}
-                comments={comments[post.id] || []}
-                onCommentSubmit={(comment) => onCommentSubmit(post.id, comment)}
-              />
-            )}
-            {post.id === 3 && (
-              <Post3
-                post={post}
-                comments={comments[post.id] || []}
-                onCommentSubmit={(comment) => onCommentSubmit(post.id, comment)}
-              />
-            )}
-            {post.id === 4 && (
-              <Post4
-                post={post}
-                comments={comments[post.id] || []}
-                onCommentSubmit={(comment) => onCommentSubmit(post.id, comment)}
-              />
-            )}
-          </div>
-        ))}
-      </div>
+    <div className="posts-container"> 
+      {currentPosts.map((post) => (
+        <Col md={10} lg={5} key={post.id}>
+          <Post
+            post={post}
+            comments={comments[post.id] || []}
+            onCommentSubmit={(comment) => onCommentSubmit(post.id, comment)}
+          />
+        </Col>
+      ))}
+  
       <div className="pagination">
         <button onClick={handlePrevPage} disabled={currentPage === 1}>
           Prev

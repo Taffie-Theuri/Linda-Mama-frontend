@@ -1,8 +1,13 @@
+// App.js
 import React, { useState, useEffect } from 'react';
 import './App.css';
 import axios from 'axios';
 import Posts from './Components/Posts';
 import Navbar from './Components/BlogNav';
+import BlogPost from './Components/BlogPost1'; 
+
+
+
 
 const App = () => {
   const [posts, setPosts] = useState([]);
@@ -54,9 +59,10 @@ const App = () => {
           posts={posts}
           comments={comments}
           onCommentSubmit={handleCommentSubmit}
+          Post={BlogPost} 
         />
       ) : (
-        <h2>Loading...</h2>
+        <h2>Loading...Your caring partner</h2>
       )}
     </div>
   );

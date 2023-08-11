@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './comment.css'; // Import your CSS file for component-specific styles
+import axios from 'axios';
 
 const CommentForm = ({ postId, onSubmit }) => {
   const [comment, setComment] = useState('');
@@ -8,10 +8,20 @@ const CommentForm = ({ postId, onSubmit }) => {
     setComment(event.target.value);
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    onSubmit(comment);
-    setComment('');
+    try {
+      const response = await axios.post(`http://localhost:3001/posts/${postId}/comments`, { content: comment });
+      const newComment = response.data;
+
+      // Call the onSubmit function passed from the parent component
+      onSubmit(newComment);
+
+      // Clear the comment input field
+      setComment('');
+    } catch (error) {
+      console.error('Error submitting comment:', error.message);
+    }
   };
 
   return (
@@ -23,7 +33,7 @@ const CommentForm = ({ postId, onSubmit }) => {
           onChange={handleChange}
           placeholder="Write your comment..."
         />
-        <button className="submit-button" type="submit" >
+        <button className="submit-button" type="submit">
           Submit
         </button>
       </form>
