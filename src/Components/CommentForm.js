@@ -25,15 +25,16 @@ const CommentForm = ({ postId, onSubmit }) => {
   };
 
   return (
-    <div className="comment-form-container">
+    <div className="comment-form-container" style={{ display: 'flex', flexDirection: 'column' }}>
       <form className="comment-form" onSubmit={handleSubmit}>
         <textarea
           className="comment-input"
           value={comment}
           onChange={handleChange}
           placeholder="Write your comment..."
+          style={{ marginBottom: '10px' }} // Separate from submit-button
         />
-        <button className="submit-button" type="submit">
+        <button className="submit-button" type="submit" style={{ alignSelf: 'flex-end' }}>
           Submit
         </button>
       </form>
