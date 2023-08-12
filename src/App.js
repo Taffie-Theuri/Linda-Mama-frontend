@@ -1,14 +1,12 @@
-
-
 import './App.css'
-import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import ChatForum from './components/ChatForum/ChatForum';
+import React, { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 
 
+import ChatForum from './Components/ChatForum/ChatForum';
 
-import React, { useState } from "react";
-import {BrowserRouter as Router, Routes, Route} from "react-router-dom"
+
 import Signup from "./Components/auth/Signup.js"
 import Login from "./Components/auth/Login.js"
 import Profile from "./Components/auth/Profile.js"
@@ -18,11 +16,6 @@ import DoctorDashboard from "./Components/doctor/DoctorDashboard.js";
 import PatientDashboard from "./Components/patient/PatientDashboard.js";
 
 
-
-import React, { useState, useEffect } from "react";
-import { Routes, Route } from 'react-router-dom';
-
-import { useSelector, useDispatch } from "react-redux";
 import { fetchAppointments } from './Features/appointmentsSlice.js'
 import { fetchPatients } from './Features/patientsSlice.js'
 import { fetchResults } from './Features/resultsSlice.js'
@@ -35,9 +28,8 @@ import PortalLabResultsPage from './Components/PortalLabResultsPage/PortalLabRes
 import PortalCalendar from './Components/PortalCalendar/PortalCalendar.js'
 
 
-import { BrowserRouter,Route,Routes } from 'react-router-dom';
-import DietBlog from './DietBlog/DietBlog';
-import Blog from './DietBlog/Blog';
+// import DietBlog from './Components/DietBlog/DietBlog';
+import Blog from './Components/DietBlog/Blog';
 
 function App() {
   const [user, setUser] = useState({})
@@ -87,38 +79,23 @@ function App() {
 
   return (
     <div className="App">
-
-      <Routes>
-
-
-        <Route path = '/portal' element={<PortalUser user={user} />}/>
-        <Route path = '/portal/patients' element={<PortalPatients patients={filterPatients()} docAppointments={docAppointments} search={search} setSearch={setSearch} user={user} />}/>
-        <Route path = '/portal/calendar' element={<PortalCalendar docAppointments={docAppointments} user={user} patientAppts={patientAppts} patients={patients} patientNames={patientNames} />}/>
-        <Route path='/portal/appointments' element={<PortalAppts patientAppts={patientAppts} user={user} /> } />
-        <Route path='/portal/labresults' element={<PortalLabResultsPage user={user} results={results} /> } />
-      </Routes>
-
-      <>
-    <Router>
-      <NavBar user={user} />
-      <Routes>
-      <Route path="/signup" element={<Signup handleSetUser={handleSetUser}/>}/>
-      <Route path="/login" element={<Login  handleSetUser={handleSetUser}/>}/>
-      <Route path="/profile" element={<Profile user={user} />}/>
-      <Route path="/doctor/dashboard" element={<DoctorDashboard user={user} />}/>
-      <Route path="/patient/dashboard" element={<PatientDashboard user={user} />}/>
-      <Route path="/Chat-forum" element={<ChatForum />} />
+    <BrowserRouter>
+    <NavBar user={user} />
+        <Routes>
+          <Route path="/blog/:id" element={<Blog />} />
+          <Route path="/signup" element={<Signup handleSetUser={handleSetUser}/>}/>
+          <Route path="/login" element={<Login  handleSetUser={handleSetUser}/>}/>
+          <Route path="/profile" element={<Profile user={user} />}/>
+          <Route path="/Chat-forum" element={<ChatForum />} />
+          <Route path = '/portal' element={<PortalUser user={user} />}/>
+          <Route path = '/portal/patients' element={<PortalPatients patients={filterPatients()} docAppointments={docAppointments} search={search} setSearch={setSearch} user={user} />}/>
+          <Route path = '/portal/calendar' element={<PortalCalendar docAppointments={docAppointments} user={user} patientAppts={patientAppts} patients={patients} patientNames={patientNames} />}/>
+          <Route path='/portal/appointments' element={<PortalAppts patientAppts={patientAppts} user={user} /> } />
+          <Route path='/portal/labresults' element={<PortalLabResultsPage user={user} results={results} /> } />
 
 
 
       <Route path="/" element={<LandingPage />} />
-      </Routes>
-
-    </Router>
-    </>
-    <BrowserRouter>
-        <Routes>
-            <Route path="/blog/:id" element={<Blog />} />
 
         </Routes>
     </BrowserRouter>

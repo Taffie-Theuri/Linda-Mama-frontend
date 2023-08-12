@@ -17,20 +17,20 @@ export default function Login({handleSetUser}) {
         fetch('/login', {
             method: "POST",
             headers: {
-                "Content-Type": "application/json"  
+                "Content-Type": "application/json"
             },
             body: JSON.stringify({ user: {
                 email: `${email}`,
                 password: `${password}`
             }})
-            
+
         }).then((r) => r.json())
         .then(handleAuthenticate)
     }
     function handleAuthenticate (data){
         localStorage.setItem('jwt', data.jwt)
         handleSetUser(data.user)
-        navigate(`/${data.user.role}/dashboard`)
+        navigate("/portal")
     }
     function handleForgotPswd(){
         console.log("i have been clicked")
@@ -42,18 +42,18 @@ export default function Login({handleSetUser}) {
         <Form onSubmit={handleSubmit} style={{backgroundColor:"hsla(0, 70%, 30%, 0.1)", marginTop:"10px", padding:"10px", borderRadius:"5px", border:"2px solid #510A53"}}>
             <Form.Group as={Row} className='mb-3'>
                 <Col sm="4"><Form.Label>Email :</Form.Label></Col>
-                <Col sm="8"><Form.Control onChange={(e)=>setEmail(e.target.value)} type='email' placeholder='name@example.com'/></Col> 
+                <Col sm="8"><Form.Control onChange={(e)=>setEmail(e.target.value)} type='email' placeholder='name@example.com'/></Col>
             </Form.Group>
 
             <Form.Group as={Row} className='mb-3'>
-                <Col sm="4"><Form.Label>Password:</Form.Label></Col>                
+                <Col sm="4"><Form.Label>Password:</Form.Label></Col>
                 <Col sm="8"><Form.Control onChange={(e)=>setPassword(e.target.value)} type='password' placeholder='Password'/></Col>
             </Form.Group>
 
             <Form.Group as={Row} className='mb-3'>
                 <Col sm="6" className="text-center" >
                     <Button variant='danger' onClick={handleForgotPswd}>Forgot Password?</Button>
-                </Col>                
+                </Col>
                 <Col  sm="6" className="text-center">
                     <Button type='submit' variant='primary'>Submit</Button>
                 </Col>
