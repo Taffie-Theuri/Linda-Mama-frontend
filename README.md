@@ -13,7 +13,7 @@ Before you begin, make sure you have the following prerequisites:
 * Clone this repository: git clone <repository_url>
 * Navigate to the project directory: cd linda-mama-frontend
 * Install dependencies: npm install
-* Start the development server: npm start 
+* Start the development server: npm start
 
 # Features
 
@@ -21,8 +21,8 @@ The Linda Mama front-end provides a user-friendly interface for patients and doc
 * User authentication and authorization using JWT tokens.
 * Viewing and scheduling appointments with doctors.
 * Accessing and managing lab results.
-* BLOGS: Diet blog and Health blog
-* Chat forum
+* BLOGS: Diet blog and Health blog.
+* Chat forum.
 
 # Contributors
 
